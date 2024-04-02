@@ -9,8 +9,8 @@ interface Fields {
 
 const myField: Fields = {
   field: [
-    { text: "Initial Investment", vals: "initInvest" },
-    { text: "Annual Investment", vals: "annInvest" },
+    { text: "Initial Investment", vals: "initialInvestment" },
+    { text: "Annual Investment", vals: "annualInvestment" },
     { text: "Expected return", vals: "expectedReturn" },
     { text: "Duration", vals: "duration" },
   ],

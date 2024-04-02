@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import SetParams from "./components/SetParams";
-import GetResult from "./components/GetResult";
 import { calculateInvestmentResults } from "./fieldsVals/investment";
 import Results from "./components/Results";
 interface InvestmentResult {
@@ -30,14 +29,27 @@ function App() {
   useEffect(() => {
     setOutput(calculateInvestmentResults(investmentVals));
   }, [investmentVals]);
+  console.log(investmentVals);
   console.log(...output.map((val) => val));
 
   return (
-    <div className="flex flex-col bg-gray-800 w-[100vw] h-[100vh] text-center justify-center pt-[20px]">
+    <div className="flex flex-col  text-center justify-center pt-[20px]">
       <SetParams setInitialVals={setInitialVals} />
-      {/* {...output.map((val) => {
-        <Results year={ val.year} , valueEndOfYear={ val.valueEndOfYear} , interest={ val.interest} , year={ val.year} , annualInvestment={val.annualInvestment} />
-      })} */}
+      <div className="text-white flex justify-around mt-5 items-center w-[700px]  h-[40px] self-center rounded-lg bg-[#29cc68] space-x">
+        <p>Year</p>
+        <p>Expected return</p>
+        <p>Annual Investment</p>
+        <p>Initial Investment</p>
+      </div>
+      {output.map((val) => (
+        <Results
+          key={val.year}
+          year={val.year}
+          valueEndOfYear={val.valueEndOfYear}
+          interest={val.interest}
+          annualInvestment={val.annualInvestment}
+        />
+      ))}
     </div>
   );
 }
